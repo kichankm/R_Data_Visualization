@@ -1,0 +1,26 @@
+// Working on relation of employment and profit through R, showing annual changes. 
+// SD학회 조윤숙 교수 source code 사용  
+#---------------------------------------------------------
+# 산업별 사업체수와 종사자수 모션챠트
+# 자료: 통계청에서 다운받기
+#
+#----------------------------------------------------------
+
+install.packages("googleVis")
+install.packages("readxl")
+
+library(googleVis); library(readxl)
+
+setwd("D:/MotionChart")
+
+MChart <- read.csv("산업_사업체수_종사자수.csv")
+
+# 결과화면의 크기 조정 1000 * 500
+# trail check 하고 결과보기
+MC_data = gvisMotionChart(MChart, idvar="Industry", timevar="Year",
+                          xvar="Company", yvar="Employee", colorvar="Company", sizevar="Employee",
+                          options=list(width=1000, height=500))
+
+plot(MC_data)
+
+#---------------------------------- END -----------------------------------------------
